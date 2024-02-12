@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Navigation Demo',
+      title: 'Navigation App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -29,7 +29,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  // List of screens to be displayed in each tab
   final List<Widget> _tabs = [
     Image.asset(
       'assets/onee.jpg',
@@ -72,39 +71,34 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
           children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF1d2630),
-              ),
-              child: Text(
-                'Navigation Drawer',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
             ListTile(
               leading: Icon(Icons.account_circle),
               title: Text('My Account'),
               onTap: () {
-                // Handle navigation to the profile screen
-
                 Navigator.pop(context);
-                // Implement your navigation logic here
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
-                // Handle navigation to the settings screen
                 Navigator.pop(context);
-                // Implement your navigation logic here
               },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: () {
+                print('Logout tapped');
+
+                Navigator.pop(context);
+              },
+            ),
+            Expanded(
+              child: Container(),
             ),
           ],
         ),
